@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HockeyManager
 {
-    internal enum Possition
+    internal enum Position
     {
         G,
         D,

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HockeyManager.Exceptions
+﻿namespace HockeyManager
 {
     internal class WrongFormatException : Exception
     {
-        WrongFormatException() : base("The file is in wrong format") { }
+        public WrongFormatException() : base("The file is in wrong format") { }
     }
 }

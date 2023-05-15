@@ -12,6 +12,7 @@ namespace HockeyManager
     internal class AddDB
     {
         private static HockeyManagerDbContext db = new HockeyManagerDbContext();
+        private static Position position;
 
         public static async Task AddTeamAsync(StreamReader reader)
         {
@@ -23,7 +24,7 @@ namespace HockeyManager
                 {
                     string[] properties = line.Split(',');
                     line = await reader.ReadLineAsync();
-                    var res = await db.AddAsync(new Team {Name = properties[0], Conference = properties[1].Equals("1") ? true : false });
+                    await db.AddAsync(new Team {Name = properties[0], Conference = properties[1].Equals("1") ? true : false });
                     await db.SaveChangesAsync();
                 }
                 await transaction.CommitAsync();
@@ -46,10 +47,20 @@ namespace HockeyManager
                 while (line != null)
                 {
                     string[] properties = line.Split(",");
+                    if (properties.Length != 3)
+                    {
+                        throw new WrongFormatException();
+                    }
                     line = await reader.ReadLineAsync();
-                    int statId = await AddStatsAsync();
+                    int statsId = await AddStatsAsync();
                     int teamId = team[teamCounter % 23].TeamId;
                     teamCounter++;
+                    if (!Enum.TryParse<Position>(properties[1], true, out position))
+                    {
+                        throw new WrongPositionFormatException(properties[1]);
+                    }
+
+                    await db.AddAsync(new Player { Name = properties[0], Position = position, Age = int.Parse(properties[2]), StatsId = statsId, TeamId = teamId });
                     await db.SaveChangesAsync();
                 }
                 await transaction.CommitAsync();

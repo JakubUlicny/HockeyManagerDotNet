@@ -15,7 +15,7 @@ namespace HockeyManager
     {
         [Key] public Guid PlayerId { get; set; }
         public string Name { get; set; }
-        public Possition Possition { get; set; }
+        public Position Position { get; set; }
         public int Age { get; set; }
         public int TeamId { get; set; }
         public int StatsId { get; set; }
