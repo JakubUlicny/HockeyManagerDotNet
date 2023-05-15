@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace HockeyManager
 {
     internal class Stats
     {
-        public int StatsId { get; set; }
+        [Key] public int StatsId { get; set; }
         public int Goals { get; set; }
         public int Assists { get; set; }
         public int? CleanSheets { get; set; }

@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace HockeyManager
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         private Form createTournamentForm;
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -47,33 +47,34 @@ namespace HockeyManager
         private void LoadTournament_Click(object sender, EventArgs e)
         { }
 
-        private void AddPlayers_Click(object sender, EventArgs e)
-        {
-            if (addPlayersDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //await PlayerDBContext.AddPlayerAsync(new StreamReader(addPlayersDialog.FileName));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Players cannot be inserted" + ex.Message);
-                }
-            }
-        }
-
-        private void addTeam_Click(object sender, EventArgs e)
+        private async void addTeam_Click(object sender, EventArgs e)
         {
             if (addTeamDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    //await TeamDBContext.AddTeamAsync(new StreamReader(addTeamDialog.FileName));
+                    await AddDB.AddTeamAsync(new StreamReader(addTeamDialog.FileName));
                     MessageBox.Show("Team(s) were added!");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Teams cannot be inserted\n" + ex.Message);
+                }
+            }
+        }
+
+        private async void addPlayer_ClickAsync(object sender, EventArgs e)
+        {
+            if (addPlayersDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    await AddDB.AddPlayersAsync(new StreamReader(addPlayersDialog.FileName));
+                    MessageBox.Show("Players were added!\n");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Players cannot be inserted" + ex.Message);
                 }
             }
         }

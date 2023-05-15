@@ -30,38 +30,38 @@ namespace HockeyManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.button1 = new System.Windows.Forms.Button();
-            this.addPlayers = new System.Windows.Forms.OpenFileDialog();
-            this.SuspendLayout();
+            button1 = new Button();
+            addPlayers = new OpenFileDialog();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(35, 431);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add players";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(35, 539);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(180, 81);
+            button1.TabIndex = 0;
+            button1.Text = "Add players";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // addPlayers
             // 
-            this.addPlayers.FileName = "addPlayers";
+            addPlayers.FileName = "addPlayers";
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1051, 510);
-            this.Controls.Add(this.button1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form2";
-            this.Text = "Create Tournament";
-            this.Load += new System.EventHandler(this.Form2_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.NHL_logo;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1051, 638);
+            Controls.Add(button1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Form2";
+            Text = "Create Tournament";
+            Load += Form2_Load;
+            ResumeLayout(false);
         }
 
         #endregion

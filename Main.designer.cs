@@ -1,6 +1,6 @@
 ﻿namespace HockeyManager
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,7 @@
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.MinimumSize = new Size(0, 25);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(1051, 20);
+            textBox1.Size = new Size(1051, 25);
             textBox1.TabIndex = 4;
             textBox1.Text = "Hockey Manager!";
             textBox1.TextAlign = HorizontalAlignment.Center;
@@ -90,6 +90,7 @@
             addPlayer.TabIndex = 6;
             addPlayer.Text = "Add Player/s";
             addPlayer.UseVisualStyleBackColor = false;
+            addPlayer.Click += addPlayer_ClickAsync;
             // 
             // addTeam
             // 
@@ -111,7 +112,7 @@
             // 
             addPlayersDialog.FileName = "addPlayersDialog";
             // 
-            // Form1
+            // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -125,7 +126,7 @@
             Controls.Add(textBox1);
             Controls.Add(createTournament);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form1";
+            Name = "Main";
             Text = "Hockey Manager";
             Load += Form1_Load;
             ResumeLayout(false);
