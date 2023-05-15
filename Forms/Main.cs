@@ -14,7 +14,7 @@ namespace HockeyManager
 {
     public partial class Main : Form
     {
-        private Form createTournamentForm;
+        private Form createTournamentBox;
         public Main()
         {
             InitializeComponent();
@@ -37,11 +37,11 @@ namespace HockeyManager
 
         private void createTournamentButton_Click(object sender, EventArgs e)
         {
-            if (createTournamentForm == null || createTournamentForm.Text == "")
+            if (createTournamentBox == null || createTournamentBox.Text == "")
             {
-                createTournamentForm = new Form2();
+                createTournamentBox = new CreateTournamentBox();
             }
-            createTournamentForm.Show();
+            createTournamentBox.Show();
         }
 
         private void LoadTournament_Click(object sender, EventArgs e)

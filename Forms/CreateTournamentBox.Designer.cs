@@ -29,61 +29,66 @@
         private void InitializeComponent()
         {
             CreateTournamentHeading = new Label();
-            numericUpDown1 = new NumericUpDown();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            NumberOfTeams = new ComboBox();
             SuspendLayout();
             // 
             // CreateTournamentHeading
             // 
             CreateTournamentHeading.Anchor = AnchorStyles.Top;
             CreateTournamentHeading.AutoSize = true;
-            CreateTournamentHeading.BackColor = SystemColors.ButtonFace;
-            CreateTournamentHeading.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            CreateTournamentHeading.ForeColor = Color.Navy;
-            CreateTournamentHeading.Location = new Point(250, 152);
+            CreateTournamentHeading.BackColor = Color.Transparent;
+            CreateTournamentHeading.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            CreateTournamentHeading.ForeColor = Color.AliceBlue;
+            CreateTournamentHeading.Location = new Point(12, 24);
             CreateTournamentHeading.Name = "CreateTournamentHeading";
-            CreateTournamentHeading.Size = new Size(316, 38);
+            CreateTournamentHeading.Size = new Size(259, 31);
             CreateTournamentHeading.TabIndex = 0;
             CreateTournamentHeading.Text = "Create Your Tournament";
             CreateTournamentHeading.TextAlign = ContentAlignment.TopCenter;
             CreateTournamentHeading.Click += label1_Click;
             // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(66, 354);
-            numericUpDown1.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.ReadOnly = true;
-            numericUpDown1.Size = new Size(150, 27);
-            numericUpDown1.TabIndex = 1;
-            numericUpDown1.Value = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.Location = new Point(47, 310);
+            label1.ForeColor = Color.AliceBlue;
+            label1.Location = new Point(47, 358);
             label1.Name = "label1";
             label1.Size = new Size(204, 31);
             label1.TabIndex = 2;
             label1.Text = "Number Of Teams";
             // 
+            // NumberOfTeams
+            // 
+            NumberOfTeams.BackColor = SystemColors.ButtonFace;
+            NumberOfTeams.DrawMode = DrawMode.OwnerDrawVariable;
+            NumberOfTeams.DropDownHeight = 200;
+            NumberOfTeams.ForeColor = Color.Navy;
+            NumberOfTeams.FormattingEnabled = true;
+            NumberOfTeams.ItemHeight = 20;
+            NumberOfTeams.Items.AddRange(new object[] { "2", "4", "8", "16" });
+            NumberOfTeams.Location = new Point(47, 402);
+            NumberOfTeams.MinimumSize = new Size(200, 0);
+            NumberOfTeams.Name = "NumberOfTeams";
+            NumberOfTeams.Size = new Size(204, 26);
+            NumberOfTeams.TabIndex = 3;
+            NumberOfTeams.SelectedIndexChanged += NumberOfTeams_SelectedIndexChanged;
+            // 
             // CreateTournamentBox
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.addPlayers;
+            BackgroundImage = Properties.Resources.logo_teams;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(NumberOfTeams);
             Controls.Add(label1);
-            Controls.Add(numericUpDown1);
             Controls.Add(CreateTournamentHeading);
             Name = "CreateTournamentBox";
             Text = "CreateTournamentBox";
             Load += CreateTournamentBox_Load;
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -91,7 +96,7 @@
         #endregion
 
         private Label CreateTournamentHeading;
-        private NumericUpDown numericUpDown1;
         private Label label1;
+        private ComboBox NumberOfTeams;
     }
 }
