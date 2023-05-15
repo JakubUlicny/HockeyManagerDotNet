@@ -63,6 +63,16 @@ namespace HockeyManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addPlayers {
+            get {
+                object obj = ResourceManager.GetObject("addPlayers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bracket {
             get {
                 object obj = ResourceManager.GetObject("bracket", resourceCulture);
