@@ -59,6 +59,10 @@ namespace HockeyManager
                 {
                     MessageBox.Show("Teams cannot be inserted\n" + ex.Message);
                 }
+                finally
+                {
+                    OnTeamChange();
+                }
             }
         }
 
@@ -82,9 +86,21 @@ namespace HockeyManager
         {
             if (deleteForm == null || deleteForm.Text == "")
             {
-                deleteForm = new CreateTournamentBox();
+                deleteForm = new DeleteForm(this);
             }
             deleteForm.Show();
+        }
+
+        public void OnTeamChange()
+        {
+            SelectTeamBox.Items.Clear();
+            SelectTeamBox.Items.AddRange(LoadTeamsToComboBox());
+        }
+
+        private string[] LoadTeamsToComboBox()
+        {
+            string[] str = UILogic.FillComboBoxWithTeams();
+            return str;
         }
     }
 }

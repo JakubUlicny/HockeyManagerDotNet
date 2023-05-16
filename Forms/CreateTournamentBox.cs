@@ -28,21 +28,20 @@ namespace HockeyManager
 
         }
 
-        private void NumberOfTeams_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
         private async void Submit_ClickAsync(object sender, EventArgs e)
         {
             int numOfTeams = 16;
             if (NumberOfTeams.SelectedItem != null)
             {
-                numOfTeams = (int) NumberOfTeams.SelectedItem;
+                numOfTeams = (int)NumberOfTeams.SelectedItem;
             }
             await Task.Factory.StartNew(() => CreateTournamentLogic.CreateTournamentAsync(numOfTeams));
-            
+
+        }
+
+        private void NumberOfTeams_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SubmitButton.Enabled = true;
         }
     }
 }

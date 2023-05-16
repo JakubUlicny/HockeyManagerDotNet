@@ -12,9 +12,11 @@ namespace HockeyManager
 {
     public partial class DeleteForm : Form
     {
-        public DeleteForm()
+        private Main _main;
+        public DeleteForm(Main main)
         {
             InitializeComponent();
+            _main = main;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,14 +62,19 @@ namespace HockeyManager
         {
             try
             {
-                if (await new SubmitParser().TeamInputParserAsync(DeleteTeamInputField.Text.Trim()))
+                if (await await Task.Factory.StartNew(() => new SubmitParser().TeamInputParserAsync(DeleteTeamInputField.Text.Trim())))
                 {
                     MessageBox.Show($"We deleted {DeleteTeamInputField.Text} from DB.");
+                    _main.OnTeamChange();
                 }
                 else
                 {
                     MessageBox.Show($"We couldn't delete {DeleteTeamInputField.Text} from DB.");
                 }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Team is not in DB.");
             }
             catch (Exception ex)
             {
@@ -79,7 +86,7 @@ namespace HockeyManager
         {
             try
             {
-                if (await new SubmitParser().PlayerInputParserAsync(DeletePlayerInputField.Text.Trim()))
+                if (await await Task.Factory.StartNew(() => new SubmitParser().PlayerInputParserAsync(DeletePlayerInputField.Text.Trim())))
                 {
                     MessageBox.Show($"We deleted {DeletePlayerInputField.Text} from DB.");
                 }
@@ -87,6 +94,10 @@ namespace HockeyManager
                 {
                     MessageBox.Show($"We couldn't delete {DeletePlayerInputField.Text} from DB.");
                 }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show($"The player with name {DeletePlayerInputField.Text} is not in DB.");
             }
             catch (Exception ex)
             {

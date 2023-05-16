@@ -32,7 +32,7 @@
             CreateTournamentHeading = new Label();
             label1 = new Label();
             NumberOfTeams = new ComboBox();
-            Submit = new Button();
+            SubmitButton = new Button();
             SuspendLayout();
             // 
             // CreateTournamentHeading
@@ -65,10 +65,13 @@
             // NumberOfTeams
             // 
             NumberOfTeams.BackColor = SystemColors.ButtonFace;
+            NumberOfTeams.DisplayMember = "yes";
             NumberOfTeams.DrawMode = DrawMode.OwnerDrawVariable;
             NumberOfTeams.DropDownHeight = 200;
+            NumberOfTeams.FlatStyle = FlatStyle.Popup;
             NumberOfTeams.ForeColor = Color.Navy;
             NumberOfTeams.FormattingEnabled = true;
+            NumberOfTeams.IntegralHeight = false;
             NumberOfTeams.ItemHeight = 20;
             NumberOfTeams.Items.AddRange(new object[] { "2", "4", "8", "16" });
             NumberOfTeams.Location = new Point(33, 396);
@@ -78,15 +81,16 @@
             NumberOfTeams.TabIndex = 3;
             NumberOfTeams.SelectedIndexChanged += NumberOfTeams_SelectedIndexChanged;
             // 
-            // Submit
+            // SubmitButton
             // 
-            Submit.Location = new Point(694, 409);
-            Submit.Name = "Submit";
-            Submit.Size = new Size(94, 29);
-            Submit.TabIndex = 4;
-            Submit.Text = "Submit";
-            Submit.UseVisualStyleBackColor = true;
-            Submit.Click += Submit_ClickAsync;
+            SubmitButton.Enabled = false;
+            SubmitButton.Location = new Point(694, 409);
+            SubmitButton.Name = "SubmitButton";
+            SubmitButton.Size = new Size(94, 29);
+            SubmitButton.TabIndex = 4;
+            SubmitButton.Text = "Submit";
+            SubmitButton.UseVisualStyleBackColor = true;
+            SubmitButton.Click += Submit_ClickAsync;
             // 
             // CreateTournamentBox
             // 
@@ -95,7 +99,7 @@
             BackgroundImage = Properties.Resources.logo_teams;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(Submit);
+            Controls.Add(SubmitButton);
             Controls.Add(NumberOfTeams);
             Controls.Add(label1);
             Controls.Add(CreateTournamentHeading);
@@ -112,6 +116,6 @@
         private Label CreateTournamentHeading;
         private Label label1;
         private ComboBox NumberOfTeams;
-        private Button Submit;
+        private Button SubmitButton;
     }
 }

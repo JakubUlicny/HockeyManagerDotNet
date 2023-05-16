@@ -13,16 +13,36 @@ namespace HockeyManager
     internal class Delete
     {
         private static HockeyManagerDbContext db = new HockeyManagerDbContext();
-        public async Task<int> DeleteTeamAsync(string? name)
+
+        public async Task<bool> DeletePlayerByNameAsync(Player player)
+        {
+            var transaction = db.Database.BeginTransaction();
+            try
+            {
+                db.Player.RemoveRange(db.Player.Where(p => p.Name.SequenceEqual(player.Name)));
+                await db.SaveChangesAsync();
+                await DeleteStatsAsync(new List<Player>() { player });
+                await db.SaveChangesAsync();
+                transaction.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        public async Task<int> DeleteTeamAsync(Team? team)
         {
             var transaction = db.Database.BeginTransaction();
             try
             {
                 int deletedPlayers, deletedStats;
-                if (name != null)
+                if (team != null)
                 {
-                    int teamId = new Read().GetTeamsByNameAsync(name).Result.Select(t => t.TeamId).First();
-                    db.Teams.RemoveRange(db.Teams.Where(t => t.Name.SequenceEqual(name)));
+                    int teamId = team.TeamId;
+                    db.Teams.RemoveRange(db.Teams.Where(t => t.TeamId == teamId));
                     await db.SaveChangesAsync();
                     deletedPlayers = await DeletePlayersByTeamAsync(teamId);
                     List<Player> players = await new Read().GetPlayersByTeamAsync(teamId);
@@ -54,7 +74,7 @@ namespace HockeyManager
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                return -1;
+                throw;
             }
             
             

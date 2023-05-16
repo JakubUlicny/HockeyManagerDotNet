@@ -17,16 +17,20 @@ namespace HockeyManager
                     await new Delete().DeleteTeamAsync(null);
                     return true;
                 }
-                var teams = await new Read().GetTeamsByNameAsync(input);
+                List<Team> teams = await new Read().GetTeamsByNameAsync(input);
                 if (teams == null || teams.Count == 0)
                 {
                     throw new KeyNotFoundException(input);
                 }
-                foreach (var item in teams)
+                foreach (Team item in teams)
                 {
-                    await new Delete().DeleteTeamAsync(item.Name);
+                    await new Delete().DeleteTeamAsync(item);
                 }
                 return true;
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw;
             }
             catch (Exception ex) 
             {
@@ -44,10 +48,25 @@ namespace HockeyManager
                     await new Delete().DeleteAllPlayersAsync();
                     return true;
                 }
-                var players = await new Read().
-            } catch (Exception ex)
+                var players = await new Read().GetPlayersByNameAsync(input);
+                if (players == null || players.Count == 0)
+                {
+                    throw new KeyNotFoundException(input);
+                }
+                foreach (var player in players)
+                {
+                    await new Delete().DeletePlayerByNameAsync(player);
+                }
+                return true;
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
     }
