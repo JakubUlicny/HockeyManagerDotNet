@@ -21,11 +21,11 @@ namespace HockeyManager
                 int deletedPlayers, deletedStats;
                 if (name != null)
                 {
-                    int teamId = Read.GetTeamsByNameAsync(name).Result.Select(t => t.TeamId).First();
+                    int teamId = new Read().GetTeamsByNameAsync(name).Result.Select(t => t.TeamId).First();
                     db.Teams.RemoveRange(db.Teams.Where(t => t.Name.SequenceEqual(name)));
                     await db.SaveChangesAsync();
                     deletedPlayers = await DeletePlayersByTeamAsync(teamId);
-                    List<Player> players = await Read.GetPlayersByTeamAsync(teamId);
+                    List<Player> players = await new Read().GetPlayersByTeamAsync(teamId);
                     deletedStats = await DeleteStatsAsync(players);
                     if (deletedStats != deletedPlayers)
                     {
@@ -41,7 +41,7 @@ namespace HockeyManager
                     await db.SaveChangesAsync();
                     counter++;
                 }
-                deletedPlayers = await DeleteAllPlayersViaTeamAsync();
+                deletedPlayers = await DeleteTeamPlayersAsync();
                 deletedStats = await DeleteAllStatsAsync();
                 
                 if (deletedStats != deletedPlayers)
@@ -60,7 +60,7 @@ namespace HockeyManager
             
         }
 
-        private async Task<int> DeleteAllPlayersViaTeamAsync()
+        private async Task<int> DeleteTeamPlayersAsync()
         {
             int counter = 0;
             foreach (Player item in db.Player)

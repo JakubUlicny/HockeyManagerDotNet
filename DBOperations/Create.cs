@@ -46,7 +46,7 @@ namespace HockeyManager
             try
             {
                 string line = await reader.ReadLineAsync();
-                List<Team> team = Read.GetAllTeams();
+                List<Team> team = new Read().GetAllTeams();
                 int teamCounter = 0;
                 while (line != null)
                 {

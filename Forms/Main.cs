@@ -14,7 +14,9 @@ namespace HockeyManager
 {
     public partial class Main : Form
     {
-        private Form createTournamentBox;
+        private Form createTournamentForm;
+        private Form deleteForm;
+
         public Main()
         {
             InitializeComponent();
@@ -37,15 +39,12 @@ namespace HockeyManager
 
         private void createTournamentButton_Click(object sender, EventArgs e)
         {
-            if (createTournamentBox == null || createTournamentBox.Text == "")
+            if (createTournamentForm == null || createTournamentForm.Text == "")
             {
-                createTournamentBox = new CreateTournamentBox();
+                createTournamentForm = new CreateTournamentBox();
             }
-            createTournamentBox.Show();
+            createTournamentForm.Show();
         }
-
-        private void LoadTournament_Click(object sender, EventArgs e)
-        { }
 
         private async void addTeam_Click(object sender, EventArgs e)
         {
@@ -77,6 +76,15 @@ namespace HockeyManager
                     MessageBox.Show("Players cannot be inserted" + ex.Message);
                 }
             }
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (deleteForm == null || deleteForm.Text == "")
+            {
+                deleteForm = new CreateTournamentBox();
+            }
+            deleteForm.Show();
         }
     }
 }

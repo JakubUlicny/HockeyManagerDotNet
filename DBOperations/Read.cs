@@ -7,27 +7,32 @@ using System.Threading.Tasks;
 
 namespace HockeyManager
 {
-    internal static class Read
+    internal class Read
     {
-        private static HockeyManagerDbContext db = new();
-        public static List<Team> GetAllTeams()
+        private HockeyManagerDbContext db = new();
+        public List<Team> GetAllTeams()
         {
             return db.Teams.AsNoTracking().ToList();
         }
 
-        public static async Task<List<Team>> GetTeamsByConferenceAsync(bool conference)
+        public async Task<List<Team>> GetTeamsByConferenceAsync(bool conference)
         {
             return await db.Teams.Where(t => t.Conference == conference).AsNoTracking().ToListAsync();
         }
 
-        public static async Task<List<Team>> GetTeamsByNameAsync(string name)
+        public async Task<List<Team>> GetTeamsByNameAsync(string name)
         {
             return await db.Teams.Where(t => t.Name.SequenceEqual(name)).AsNoTracking().ToListAsync();
         }
 
-        public static async Task<List<Player>> GetPlayersByTeamAsync(int teamId)
+        public async Task<List<Player>> GetPlayersByTeamAsync(int teamId)
         {
             return await db.Player.Where(p => p.TeamId == teamId).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<List<Player>> GetPlayersByNameAsync(string name)
+        {
+            return await db.Player.Where(p => p.Name.SequenceEqual("name")).AsNoTracking().ToListAsync();
         }
     }
 }

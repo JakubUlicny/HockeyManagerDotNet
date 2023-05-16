@@ -30,7 +30,7 @@
         {
             createTournament = new Button();
             textBox1 = new TextBox();
-            LoadTournament = new Button();
+            DeleteButton = new Button();
             addPlayer = new Button();
             addTeam = new Button();
             addTeamDialog = new OpenFileDialog();
@@ -67,18 +67,18 @@
             textBox1.TextAlign = HorizontalAlignment.Center;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
-            // LoadTournament
+            // DeleteButton
             // 
-            LoadTournament.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            LoadTournament.BackColor = Color.DarkGray;
-            LoadTournament.Location = new Point(658, 518);
-            LoadTournament.Margin = new Padding(3, 4, 3, 4);
-            LoadTournament.Name = "LoadTournament";
-            LoadTournament.Size = new Size(208, 105);
-            LoadTournament.TabIndex = 5;
-            LoadTournament.Text = "Load Tournament";
-            LoadTournament.UseVisualStyleBackColor = false;
-            LoadTournament.Click += LoadTournament_Click;
+            DeleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            DeleteButton.BackColor = Color.DarkGray;
+            DeleteButton.Location = new Point(658, 518);
+            DeleteButton.Margin = new Padding(3, 4, 3, 4);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(208, 105);
+            DeleteButton.TabIndex = 5;
+            DeleteButton.Text = "Load Tournament";
+            DeleteButton.UseVisualStyleBackColor = false;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // addPlayer
             // 
@@ -122,7 +122,7 @@
             ClientSize = new Size(1051, 638);
             Controls.Add(addTeam);
             Controls.Add(addPlayer);
-            Controls.Add(LoadTournament);
+            Controls.Add(DeleteButton);
             Controls.Add(textBox1);
             Controls.Add(createTournament);
             Margin = new Padding(3, 4, 3, 4);
@@ -136,7 +136,7 @@
         #endregion
         private System.Windows.Forms.Button createTournament;
         protected internal System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button LoadTournament;
+        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button addPlayer;
         private System.Windows.Forms.Button addTeam;
         private System.Windows.Forms.OpenFileDialog addTeamDialog;

@@ -15,8 +15,8 @@ namespace HockeyManager
 
         public static async Task CreateTournamentAsync(int numOfTeams)
         {
-            EasternConference = await Task.Factory.StartNew(() => SelectTeam(Read.GetTeamsByConferenceAsync(true).Result, numOfTeams));
-            WesternConference = await Task.Factory.StartNew(()=> SelectTeam(Read.GetTeamsByConferenceAsync(false).Result, numOfTeams));
+            EasternConference = await Task.Factory.StartNew(() => SelectTeam(new Read().GetTeamsByConferenceAsync(true).Result, numOfTeams));
+            WesternConference = await Task.Factory.StartNew(()=> SelectTeam(new Read().GetTeamsByConferenceAsync(false).Result, numOfTeams));
             
         } 
 
