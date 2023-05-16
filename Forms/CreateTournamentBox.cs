@@ -13,8 +13,6 @@ namespace HockeyManager
 {
     public partial class CreateTournamentBox : Form
     {
-        decimal lastUsedValue = 2;
-        int counter;
         public CreateTournamentBox()
         {
             InitializeComponent();
@@ -34,6 +32,17 @@ namespace HockeyManager
         {
 
 
+        }
+
+        private async void Submit_ClickAsync(object sender, EventArgs e)
+        {
+            int numOfTeams = 16;
+            if (NumberOfTeams.SelectedItem != null)
+            {
+                numOfTeams = (int) NumberOfTeams.SelectedItem;
+            }
+            await Task.Factory.StartNew(() => CreateTournamentLogic.CreateTournamentAsync(numOfTeams));
+            
         }
     }
 }

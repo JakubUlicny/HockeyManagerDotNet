@@ -53,7 +53,7 @@ namespace HockeyManager
             {
                 try
                 {
-                    await AddDB.AddTeamAsync(new StreamReader(addTeamDialog.FileName));
+                    await Task.Factory.StartNew(() => Create.AddTeamAsync(new StreamReader(addTeamDialog.FileName)));
                     MessageBox.Show("Team(s) were added!");
                 }
                 catch (Exception ex)
@@ -69,7 +69,7 @@ namespace HockeyManager
             {
                 try
                 {
-                    await AddDB.AddPlayersAsync(new StreamReader(addPlayersDialog.FileName));
+                    await Task.Factory.StartNew(() => Create.AddPlayersAsync(new StreamReader(addPlayersDialog.FileName)));
                     MessageBox.Show("Players were added!\n");
                 }
                 catch (Exception ex)

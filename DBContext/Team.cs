@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
 
+//TODO: prerob id z int na Guid
 namespace HockeyManager
 {
     internal class Team

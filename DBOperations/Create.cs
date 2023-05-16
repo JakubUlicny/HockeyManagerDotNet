@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HockeyManager
 {
-    internal class AddDB
+    internal class Create
     {
         private static HockeyManagerDbContext db = new HockeyManagerDbContext();
         private static Position position;
@@ -24,6 +24,10 @@ namespace HockeyManager
                 {
                     string[] properties = line.Split(',');
                     line = await reader.ReadLineAsync();
+                    if (properties.Length != 2)
+                    {
+                        throw new WrongFormatException();
+                    }
                     await db.AddAsync(new Team {Name = properties[0], Conference = properties[1].Equals("1") ? true : false });
                     await db.SaveChangesAsync();
                 }
@@ -42,7 +46,7 @@ namespace HockeyManager
             try
             {
                 string line = await reader.ReadLineAsync();
-                List<Team> team = ReadDB.GetAllTeams();
+                List<Team> team = Read.GetAllTeams();
                 int teamCounter = 0;
                 while (line != null)
                 {

@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTournamentBox));
             CreateTournamentHeading = new Label();
             label1 = new Label();
             NumberOfTeams = new ComboBox();
+            Submit = new Button();
             SuspendLayout();
             // 
             // CreateTournamentHeading
             // 
-            CreateTournamentHeading.Anchor = AnchorStyles.Top;
+            CreateTournamentHeading.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             CreateTournamentHeading.AutoSize = true;
             CreateTournamentHeading.BackColor = Color.Transparent;
-            CreateTournamentHeading.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            CreateTournamentHeading.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             CreateTournamentHeading.ForeColor = Color.AliceBlue;
-            CreateTournamentHeading.Location = new Point(12, 24);
+            CreateTournamentHeading.Location = new Point(1, 29);
             CreateTournamentHeading.Name = "CreateTournamentHeading";
-            CreateTournamentHeading.Size = new Size(259, 31);
+            CreateTournamentHeading.Size = new Size(270, 31);
             CreateTournamentHeading.TabIndex = 0;
             CreateTournamentHeading.Text = "Create Your Tournament";
             CreateTournamentHeading.TextAlign = ContentAlignment.TopCenter;
@@ -54,7 +56,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label1.ForeColor = Color.AliceBlue;
-            label1.Location = new Point(47, 358);
+            label1.Location = new Point(33, 351);
             label1.Name = "label1";
             label1.Size = new Size(204, 31);
             label1.TabIndex = 2;
@@ -69,12 +71,22 @@
             NumberOfTeams.FormattingEnabled = true;
             NumberOfTeams.ItemHeight = 20;
             NumberOfTeams.Items.AddRange(new object[] { "2", "4", "8", "16" });
-            NumberOfTeams.Location = new Point(47, 402);
+            NumberOfTeams.Location = new Point(33, 396);
             NumberOfTeams.MinimumSize = new Size(200, 0);
             NumberOfTeams.Name = "NumberOfTeams";
             NumberOfTeams.Size = new Size(204, 26);
             NumberOfTeams.TabIndex = 3;
             NumberOfTeams.SelectedIndexChanged += NumberOfTeams_SelectedIndexChanged;
+            // 
+            // Submit
+            // 
+            Submit.Location = new Point(694, 409);
+            Submit.Name = "Submit";
+            Submit.Size = new Size(94, 29);
+            Submit.TabIndex = 4;
+            Submit.Text = "Submit";
+            Submit.UseVisualStyleBackColor = true;
+            Submit.Click += Submit_ClickAsync;
             // 
             // CreateTournamentBox
             // 
@@ -83,9 +95,11 @@
             BackgroundImage = Properties.Resources.logo_teams;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(Submit);
             Controls.Add(NumberOfTeams);
             Controls.Add(label1);
             Controls.Add(CreateTournamentHeading);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CreateTournamentBox";
             Text = "CreateTournamentBox";
             Load += CreateTournamentBox_Load;
@@ -98,5 +112,6 @@
         private Label CreateTournamentHeading;
         private Label label1;
         private ComboBox NumberOfTeams;
+        private Button Submit;
     }
 }
