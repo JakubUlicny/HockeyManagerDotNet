@@ -69,7 +69,7 @@
             CreateTournamentHeading.TabIndex = 0;
             CreateTournamentHeading.Text = "Create Your Tournament";
             CreateTournamentHeading.TextAlign = ContentAlignment.TopCenter;
-            CreateTournamentHeading.Click += label1_Click;
+            CreateTournamentHeading.Click += Label1_Click;
             // 
             // label1
             // 
@@ -100,6 +100,7 @@
             NumberOfTeams.Name = "NumberOfTeams";
             NumberOfTeams.Size = new Size(204, 26);
             NumberOfTeams.TabIndex = 3;
+            NumberOfTeams.Tag = "NOT";
             NumberOfTeams.SelectedIndexChanged += NumberOfTeams_SelectedIndexChanged;
             // 
             // SubmitButton

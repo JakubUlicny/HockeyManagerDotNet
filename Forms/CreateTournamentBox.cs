@@ -2,16 +2,19 @@
 {
     public partial class CreateTournamentBox : Form
     {
-        private Dictionary<int, string> westernSelectedTeams = new();
-        private Dictionary<int, string> easternSelectedTeams = new();
+        private Dictionary<int, string> westernDictTeams = new();
+        private Dictionary<int, string> easternDictTeams = new();
         private List<string> easternTeamList = new();
         private List<string> westernTeamList = new();
+        private int _playoffRound;
+        private int _selectedCount = 0;
+
         public CreateTournamentBox()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -34,9 +37,13 @@
 
         private void NumberOfTeams_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _playoffRound = (int)NumberOfTeams.SelectedItem;
+            _selectedCount = 0;
+            SubmitButton.Enabled = false;
             DisableTeamComboBox();
-            int numOfSelected = (int)NumberOfTeams.SelectedItem;
-            if (numOfSelected == 16)
+            westernDictTeams = new();
+            easternDictTeams = new();
+            if (_playoffRound == 16)
             {
                 Western5.Enabled = true;
                 Western6.Enabled = true;
@@ -47,19 +54,19 @@
                 Eastern7.Enabled = true;
                 Eastern8.Enabled = true;
             }
-            if (numOfSelected >= 8)
+            if (_playoffRound >= 8)
             {
                 Western3.Enabled = true;
                 Western4.Enabled = true;
                 Eastern3.Enabled = true;
                 Eastern4.Enabled = true;
             }
-            if (numOfSelected >= 4)
+            if (_playoffRound >= 4)
             {
                 Western2.Enabled = true;
                 Eastern2.Enabled = true;
             }
-            if (numOfSelected >= 2)
+            if (_playoffRound >= 2)
             {
                 Eastern1.Enabled = true;
                 Western1.Enabled = true;
@@ -73,6 +80,7 @@
 
                 if (!item.Equals(NumberOfTeams))
                 {
+                    item.SelectedIndex = -1;
                     item.Enabled = false;
                 }
             }
@@ -82,8 +90,7 @@
         {
             try
             {
-                ComboBox box = sender as ComboBox;
-                if (box == null) throw new ArgumentException(nameof(box));
+                if (sender is not ComboBox box) throw new ArgumentException(nameof(box));
                 box.Items.Clear();
                 if (box.Tag.ToString().Contains('W'))
                 {
@@ -93,9 +100,7 @@
                     }
                     box.Items
                         .AddRange(
-                        westernTeamList
-                        .Except(westernSelectedTeams.Values)
-                        .ToArray()
+                        westernTeamList.ToArray()
                         );
                 }
                 else
@@ -106,9 +111,7 @@
                     }
                     box.Items
                         .AddRange(
-                        easternTeamList
-                        .Except(easternSelectedTeams.Values)
-                        .ToArray()
+                        easternTeamList.ToArray()
                         );
                 }
             }
@@ -123,42 +126,38 @@
             try
             {
                 ComboBox box = sender as ComboBox;
+                if (box.SelectedIndex == -1) return;
                 string? tag = box.Tag.ToString();
+                int lengthBefore, lengthAfter = 0;
                 if (tag!.Contains('W'))
                 {
-                    AddToDictionary(westernSelectedTeams, tag, box);
+                    lengthBefore = westernDictTeams.Count;
+                    AddToDictionary(westernDictTeams, tag, box);
+                    lengthAfter = westernDictTeams.Count;
                 }
                 else
                 {
-                    AddToDictionary(easternSelectedTeams, tag, box);
+                    lengthBefore = easternDictTeams.Count;
+                    AddToDictionary(easternDictTeams, tag, box);
+                    lengthAfter = easternDictTeams.Count;
                 }
 
-                foreach (var item in Controls)
+                if (lengthAfter - lengthBefore == 1)
                 {
-                    if (item.GetType() == typeof(ComboBox))
-                    {
-                        ComboBox? comboBox = item as ComboBox;
-                        if (comboBox.Tag.ToString().Contains('W'))
-                        {
-                            comboBox.Items
-                                .AddRange(
-                                westernTeamList
-                                .Except(westernSelectedTeams.Values)
-                                .ToArray()
-                                );
-                        }
-                        else
-                        {
-                            comboBox.Items
-                                .AddRange(
-                                easternTeamList
-                                .Except(easternSelectedTeams.Values)
-                                .ToArray()
-                                );
-                        }
-                    }
+                    _selectedCount++;
                 }
 
+                if (_playoffRound == _selectedCount &&
+                    westernDictTeams.Values.Distinct().Count()
+                    + easternDictTeams.Values.Distinct().Count() == _selectedCount)
+                    
+                {
+                    SubmitButton.Enabled = true;
+                }
+                else
+                {
+                    SubmitButton.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
@@ -166,13 +165,13 @@
             }
         }
 
-        private void AddToDictionary(Dictionary<int, string> conferenceTeams, string? tag, ComboBox box)
+        private static void AddToDictionary(Dictionary<int, string> conferenceTeams, string? tag, ComboBox box)
         {
             try
             {
                 int key = int.Parse(tag[1].ToString());
                 if (conferenceTeams.ContainsKey(key))
-                { 
+                {
                     conferenceTeams[key] = box.SelectedItem.ToString();
                 }
                 else
@@ -180,7 +179,7 @@
                     conferenceTeams.Add(key, box.SelectedItem.ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
