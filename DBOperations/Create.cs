@@ -40,32 +40,56 @@ namespace HockeyManager
             }
         }
 
-        public static async Task AddPlayersAsync(StreamReader reader)
+        private static void CheckProperties(string[] properties)
+        {
+            if (properties.Length != 3)
+            {
+                throw new WrongFormatException();
+            }
+        }
+
+        private static async Task CreateDBValues(string[] properties, int teamId)
+        {
+            int statsId = await AddStatsAsync();
+            if (!Enum.TryParse<Position>(properties[1], true, out position))
+            {
+                throw new WrongPositionFormatException(properties[1]);
+            }
+
+            await db.AddAsync(new Player { Name = properties[0], Position = position, Age = int.Parse(properties[2]), StatsId = statsId, TeamId = teamId });
+            await db.SaveChangesAsync();
+        }
+
+        public static async Task AddPlayersAsync(StreamReader reader, string teamName)
         {
             var transaction = db.Database.BeginTransaction();
             try
             {
-                string line = await reader.ReadLineAsync();
-                List<Team> team = await new Read().GetAllTeams();
-                int teamCounter = 0;
-                while (line != null)
+                string? line = await reader.ReadLineAsync();
+                if (teamName.Contains("all"))
                 {
-                    string[] properties = line.Split(",");
-                    if (properties.Length != 3)
+                    int teamCounter = 0;
+                    List<Team> team = await new Read().GetAllTeams();
+                    while (line != null)
                     {
-                        throw new WrongFormatException();
+                        string[] properties = line.Split(",");
+                        line = await reader.ReadLineAsync();
+                        CheckProperties(properties);
+                        int teamId = team[teamCounter % 23].TeamId;
+                        teamCounter++;
+                        await CreateDBValues(properties, teamId);
                     }
-                    line = await reader.ReadLineAsync();
-                    int statsId = await AddStatsAsync();
-                    int teamId = team[teamCounter % 23].TeamId;
-                    teamCounter++;
-                    if (!Enum.TryParse<Position>(properties[1], true, out position))
+                }
+                else
+                {
+                    Team team = (await new Read().GetTeamByNameAsync(teamName)).First();
+                    while (line != null)
                     {
-                        throw new WrongPositionFormatException(properties[1]);
+                        string[] properties = line.Split(",");
+                        line = await reader.ReadLineAsync();
+                        CheckProperties(properties);
+                        await CreateDBValues(properties, team.TeamId);
                     }
-
-                    await db.AddAsync(new Player { Name = properties[0], Position = position, Age = int.Parse(properties[2]), StatsId = statsId, TeamId = teamId });
-                    await db.SaveChangesAsync();
                 }
                 await transaction.CommitAsync();
             }

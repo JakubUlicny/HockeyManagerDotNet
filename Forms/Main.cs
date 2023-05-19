@@ -68,11 +68,12 @@ namespace HockeyManager
 
         private async void addPlayer_ClickAsync(object sender, EventArgs e)
         {
+            string teamName = SelectTeamBox.Text;
             if (addPlayersDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    await Task.Factory.StartNew(() => Create.AddPlayersAsync(new StreamReader(addPlayersDialog.FileName)));
+                    await Task.Factory.StartNew(() => Create.AddPlayersAsync(new StreamReader(addPlayersDialog.FileName), teamName));
                     MessageBox.Show("Players were added!\n");
                 }
                 catch (Exception ex)
@@ -99,8 +100,23 @@ namespace HockeyManager
 
         private string[] LoadTeamsToComboBox()
         {
-            string[] str = UILogic.FillComboBoxWithTeams();
-            return str;
+            List<string> result = new List<string>();
+            result.Add(string.Empty);
+            result.Add("Randomly to all teams.");
+            return result.Concat(UILogic.FillComboBoxWithTeams()).ToArray();
+        }
+
+        private void SelectTeamBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string text = SelectTeamBox.Text;
+            if (text == "")
+            {
+                addPlayer.Enabled = false;
+            }
+            else
+            {
+                addPlayer.Enabled = true;
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace HockeyManager
                     await new Delete().DeleteTeamAsync(null);
                     return true;
                 }
-                List<Team> teams = await new Read().GetTeamsByNameAsync(input);
+                List<Team> teams = await new Read().GetTeamByNameAsync(input);
                 if (teams == null || teams.Count == 0)
                 {
                     throw new KeyNotFoundException(input);

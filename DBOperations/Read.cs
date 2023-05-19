@@ -20,7 +20,7 @@ namespace HockeyManager
             return await db.Teams.Where(t => t.Conference == conference).ToListAsync();
         }
 
-        public async Task<List<Team>> GetTeamsByNameAsync(string name)
+        public async Task<List<Team>> GetTeamByNameAsync(string name)
         {
             return await db.Teams.Where(t => t.Name == name).ToListAsync();
         }

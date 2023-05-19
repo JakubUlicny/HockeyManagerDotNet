@@ -82,12 +82,12 @@
             addPlayer.UseVisualStyleBackColor = false;
             addPlayer.Click += addPlayer_ClickAsync;
             // 
-            // addTeam
+            // addTeams
             // 
             addTeams.BackColor = Color.DarkGray;
             addTeams.Location = new Point(187, 32);
             addTeams.Margin = new Padding(3, 4, 3, 4);
-            addTeams.Name = "addTeam";
+            addTeams.Name = "addTeams";
             addTeams.Size = new Size(208, 105);
             addTeams.TabIndex = 7;
             addTeams.Text = "Add Teams";
@@ -116,12 +116,13 @@
             // 
             // SelectTeamBox
             // 
-            SelectTeamBox.Items.AddRange(LoadTeamsToComboBox());
             SelectTeamBox.FormattingEnabled = true;
+            SelectTeamBox.Items.AddRange(LoadTeamsToComboBox());
             SelectTeamBox.Location = new Point(693, 144);
             SelectTeamBox.Name = "SelectTeamBox";
             SelectTeamBox.Size = new Size(151, 28);
             SelectTeamBox.TabIndex = 9;
+            SelectTeamBox.SelectedIndexChanged += SelectTeamBox_SelectedIndexChanged;
             // 
             // secondBindingSource
             // 
