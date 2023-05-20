@@ -33,6 +33,7 @@
             westernScore = new Label();
             easternScore = new Label();
             westernTeam = new Label();
+            StatsButton = new Button();
             SuspendLayout();
             // 
             // easternTeam
@@ -98,12 +99,24 @@
             westernTeam.Tag = "W2";
             westernTeam.Text = "Team2";
             // 
+            // StatsButton
+            // 
+            StatsButton.Enabled = false;
+            StatsButton.Location = new Point(45, 369);
+            StatsButton.Name = "StatsButton";
+            StatsButton.Size = new Size(170, 57);
+            StatsButton.TabIndex = 5;
+            StatsButton.Text = "Player Stats";
+            StatsButton.UseVisualStyleBackColor = true;
+            StatsButton.Click += button1_Click;
+            // 
             // CupFinal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
+            Controls.Add(StatsButton);
             Controls.Add(westernTeam);
             Controls.Add(easternScore);
             Controls.Add(westernScore);
@@ -122,5 +135,6 @@
         private Label westernScore;
         private Label easternScore;
         private Label westernTeam;
+        private Button StatsButton;
     }
 }

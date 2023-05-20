@@ -60,6 +60,7 @@ namespace HockeyManager.Forms
             easternScore.Text = (int.Parse(easternScore.Text) + 1).ToString();
             if (easternScore.Text.SequenceEqual("4"))
             {
+                ChangeEnableStatus();
                 MessageBox.Show($"Team - {easternTeam.Text} won Stanley Cup! Congrats!");
             }
         }
@@ -69,8 +70,22 @@ namespace HockeyManager.Forms
             westernScore.Text = (int.Parse(westernScore.Text) + 1).ToString();
             if (westernScore.Text.SequenceEqual("4"))
             {
-                MessageBox.Show($"Team - {easternTeam.Text} won Stanley Cup! Congrats!");
+                ChangeEnableStatus();
+                MessageBox.Show($"Team - {westernTeam.Text} won Stanley Cup! Congrats!");
+
             }
+        }
+
+        private void ChangeEnableStatus()
+        {
+            westernScore.Enabled = false;
+            easternScore.Enabled = false;
+            StatsButton.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

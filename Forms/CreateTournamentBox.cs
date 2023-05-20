@@ -33,7 +33,10 @@ namespace HockeyManager
                 case 2:
                     CupFinal form = new CupFinal(easternDictTeams, westernDictTeams);
                     form.Show();
-
+                    break;
+                case 16:
+                    FirstRound firstRound = new FirstRound(easternDictTeams, westernDictTeams);
+                    firstRound.Show();
                     break;
                 default:
                     break;
