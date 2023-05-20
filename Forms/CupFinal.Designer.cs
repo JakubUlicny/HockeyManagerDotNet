@@ -41,12 +41,14 @@
             easternTeam.AutoSize = true;
             easternTeam.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             easternTeam.ForeColor = Color.AliceBlue;
-            easternTeam.Location = new Point(278, 54);
+            easternTeam.ImageAlign = ContentAlignment.TopCenter;
+            easternTeam.Location = new Point(281, 58);
             easternTeam.Name = "easternTeam";
             easternTeam.Size = new Size(165, 60);
             easternTeam.TabIndex = 0;
             easternTeam.Tag = "E2";
             easternTeam.Text = "Team1";
+            easternTeam.TextAlign = ContentAlignment.TopCenter;
             // 
             // VS
             // 
@@ -65,7 +67,7 @@
             westernScore.AutoSize = true;
             westernScore.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             westernScore.ForeColor = Color.AliceBlue;
-            westernScore.Location = new Point(379, 234);
+            westernScore.Location = new Point(477, 234);
             westernScore.Name = "westernScore";
             westernScore.Size = new Size(50, 60);
             westernScore.TabIndex = 2;
@@ -78,7 +80,7 @@
             easternScore.AutoSize = true;
             easternScore.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             easternScore.ForeColor = Color.AliceBlue;
-            easternScore.Location = new Point(379, 114);
+            easternScore.Location = new Point(281, 118);
             easternScore.Name = "easternScore";
             easternScore.Size = new Size(50, 60);
             easternScore.TabIndex = 3;
@@ -92,7 +94,7 @@
             westernTeam.AutoSize = true;
             westernTeam.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             westernTeam.ForeColor = Color.AliceBlue;
-            westernTeam.Location = new Point(278, 294);
+            westernTeam.Location = new Point(362, 315);
             westernTeam.Name = "westernTeam";
             westernTeam.Size = new Size(165, 60);
             westernTeam.TabIndex = 4;

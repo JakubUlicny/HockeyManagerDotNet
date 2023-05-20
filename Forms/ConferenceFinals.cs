@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +10,13 @@ using System.Windows.Forms;
 
 namespace HockeyManager.Forms
 {
-    public partial class FirstRound : Form
+    public partial class ConferenceFinals : Form
     {
         private Dictionary<int, string> _easternTeams;
         private Dictionary<int, string> _westernTeams;
         private Dictionary<int, string> _easternTeamNames = new();
         private Dictionary<int, string> _westernTeamNames = new();
-
-        public FirstRound(Dictionary<int, string> easternTeam, Dictionary<int, string> westernTeam)
+        public ConferenceFinals(Dictionary<int, string> easternTeam, Dictionary<int, string> westernTeam)
         {
             InitializeComponent();
             _easternTeams = easternTeam;
@@ -66,7 +63,7 @@ namespace HockeyManager.Forms
                 Label score = (Label)sender;
                 string scoreTag = score.Tag.ToString();
                 int key = int.Parse(scoreTag[1].ToString());
-                int opositeNum = 9 - key;
+                int opositeNum = 3 - key;
                 Label opositeLabel = (Label)Controls.Find($"{scoreTag[0]}Score{opositeNum}", true).First();
 
                 if (opositeLabel.Text.SequenceEqual("4") || score.Text.SequenceEqual("4")) return;
@@ -85,7 +82,7 @@ namespace HockeyManager.Forms
                         if (label.Tag.ToString().SequenceEqual($"{scoreTag[0]}{scoreTag[1]}Sc"))
                         {
                             AddWinningTeam(key, scoreTag[0]);
-                            if (_easternTeamNames.Count + _westernTeamNames.Count == 8)
+                            if (_easternTeamNames.Count + _westernTeamNames.Count == 2)
                             {
                                 NextRound.Enabled = true;
                             }
@@ -101,18 +98,12 @@ namespace HockeyManager.Forms
             }
         }
 
-        private void AddWinningTeam(int key, char conference)
+        private void AddWinningTeam( int key, char conference)
         {
             int oldKey = key;
-            if (key > 4)
+            if (key > 1)
             {
-                switch (key)
-                {
-                    case 8: key = 1; break;
-                    case 7: key = 2; break;
-                    case 6: key = 3; break;
-                    case 5: key = 4; break;
-                }
+                key = 1;
             }
             if (conference.Equals('E')) _easternTeamNames.Add(key, _easternTeams[oldKey]);
             else _westernTeamNames.Add(key, _westernTeams[oldKey]);
@@ -120,8 +111,8 @@ namespace HockeyManager.Forms
 
         private void NextRound_Click(object sender, EventArgs e)
         {
-            SecondRound secondRound = new SecondRound(_easternTeamNames, _westernTeamNames);
-            secondRound.Show();
+            CupFinal cupFinal = new CupFinal(_easternTeamNames, _westernTeamNames);
+            cupFinal.Show();
         }
     }
 }

@@ -34,6 +34,14 @@ namespace HockeyManager
                     CupFinal form = new CupFinal(easternDictTeams, westernDictTeams);
                     form.Show();
                     break;
+                case 4:
+                    ConferenceFinals conferenceFinals = new ConferenceFinals(easternDictTeams, westernDictTeams);
+                    conferenceFinals.Show();
+                    break;
+                case 8:
+                    SecondRound secondRound = new SecondRound(easternDictTeams, westernDictTeams);
+                    secondRound.Show();
+                    break;
                 case 16:
                     FirstRound firstRound = new FirstRound(easternDictTeams, westernDictTeams);
                     firstRound.Show();

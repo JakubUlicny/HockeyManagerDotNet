@@ -264,6 +264,7 @@
             NextRound.TabIndex = 16;
             NextRound.Text = "Next Round";
             NextRound.UseVisualStyleBackColor = true;
+            NextRound.Click += NextRound_Click;
             // 
             // WScore1
             // 
