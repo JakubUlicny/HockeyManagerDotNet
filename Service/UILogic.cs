@@ -21,5 +21,10 @@ namespace HockeyManager
                 .OrderBy(t => t)
                 .ToList();
         }
+
+        public static Tuple<string, string> MakePlayoffCouples(Dictionary<int, string>  easternTeams, Dictionary<int, string> westernTeams, int index)
+        {
+            return new Tuple<string, string>(easternTeams[index], westernTeams[index]);
+        }
     }
 }

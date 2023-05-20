@@ -1,4 +1,6 @@
-﻿namespace HockeyManager
+﻿using HockeyManager.Forms;
+
+namespace HockeyManager
 {
     public partial class CreateTournamentBox : Form
     {
@@ -26,12 +28,16 @@
 
         private async void Submit_ClickAsync(object sender, EventArgs e)
         {
-            int numOfTeams = 16;
-            if (NumberOfTeams.SelectedItem != null)
+            switch (_playoffRound)
             {
-                numOfTeams = (int)NumberOfTeams.SelectedItem;
+                case 2:
+                    CupFinal form = new CupFinal(easternDictTeams, westernDictTeams);
+                    form.Show();
+
+                    break;
+                default:
+                    break;
             }
-            await Task.Factory.StartNew(() => CreateTournamentLogic.CreateTournamentAsync(numOfTeams));
 
         }
 
