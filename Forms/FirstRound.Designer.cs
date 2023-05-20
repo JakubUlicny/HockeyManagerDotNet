@@ -46,21 +46,21 @@
             EasternFirst = new Label();
             NextRound = new Button();
             WScore1 = new Label();
-            Wscore7 = new Label();
+            WScore7 = new Label();
             WScore8 = new Label();
             WScore4 = new Label();
             WScore3 = new Label();
             WScore2 = new Label();
-            W5Sc = new Label();
+            WScore5 = new Label();
             WScore6 = new Label();
-            label25 = new Label();
-            label26 = new Label();
-            label27 = new Label();
-            label28 = new Label();
-            label29 = new Label();
-            label30 = new Label();
-            label31 = new Label();
-            label32 = new Label();
+            EScore4 = new Label();
+            EScore3 = new Label();
+            EScore2 = new Label();
+            EScore1 = new Label();
+            EScore5 = new Label();
+            EScore6 = new Label();
+            EScore7 = new Label();
+            EScore8 = new Label();
             SuspendLayout();
             // 
             // WesternFirst
@@ -276,20 +276,20 @@
             WScore1.TabIndex = 17;
             WScore1.Tag = "W1Sc";
             WScore1.Text = "0";
-            WScore1.Click += WScore1_Click;
+            WScore1.Click += Score_Click;
             // 
-            // Wscore7
+            // WScore7
             // 
-            Wscore7.AutoSize = true;
-            Wscore7.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            Wscore7.ForeColor = Color.AliceBlue;
-            Wscore7.Location = new Point(445, 92);
-            Wscore7.Name = "Wscore7";
-            Wscore7.Size = new Size(35, 41);
-            Wscore7.TabIndex = 18;
-            Wscore7.Tag = "W7Sc";
-            Wscore7.Text = "0";
-            Wscore7.Click += Wscore7_Click;
+            WScore7.AutoSize = true;
+            WScore7.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            WScore7.ForeColor = Color.AliceBlue;
+            WScore7.Location = new Point(445, 92);
+            WScore7.Name = "WScore7";
+            WScore7.Size = new Size(35, 41);
+            WScore7.TabIndex = 18;
+            WScore7.Tag = "W7Sc";
+            WScore7.Text = "0";
+            WScore7.Click += Score_Click;
             // 
             // WScore8
             // 
@@ -302,7 +302,7 @@
             WScore8.TabIndex = 19;
             WScore8.Tag = "W8Sc";
             WScore8.Text = "0";
-            WScore8.Click += WScore8_Click;
+            WScore8.Click += Score_Click;
             // 
             // WScore4
             // 
@@ -315,7 +315,7 @@
             WScore4.TabIndex = 20;
             WScore4.Tag = "W4Sc";
             WScore4.Text = "0";
-            WScore4.Click += WScore4_Click;
+            WScore4.Click += Score_Click;
             // 
             // WScore3
             // 
@@ -328,7 +328,7 @@
             WScore3.TabIndex = 21;
             WScore3.Tag = "W3Sc";
             WScore3.Text = "0";
-            WScore3.Click += WScore3_Click;
+            WScore3.Click += Score_Click;
             // 
             // WScore2
             // 
@@ -341,20 +341,20 @@
             WScore2.TabIndex = 22;
             WScore2.Tag = "W2Sc";
             WScore2.Text = "0";
-            WScore2.Click += WScore2_Click;
+            WScore2.Click += Score_Click;
             // 
-            // W5Sc
+            // WScore5
             // 
-            W5Sc.AutoSize = true;
-            W5Sc.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            W5Sc.ForeColor = Color.AliceBlue;
-            W5Sc.Location = new Point(445, 174);
-            W5Sc.Name = "W5Sc";
-            W5Sc.Size = new Size(35, 41);
-            W5Sc.TabIndex = 23;
-            W5Sc.Tag = "W5Sc";
-            W5Sc.Text = "0";
-            W5Sc.Click += W5Sc_Click;
+            WScore5.AutoSize = true;
+            WScore5.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            WScore5.ForeColor = Color.AliceBlue;
+            WScore5.Location = new Point(445, 174);
+            WScore5.Name = "WScore5";
+            WScore5.Size = new Size(35, 41);
+            WScore5.TabIndex = 23;
+            WScore5.Tag = "W5Sc";
+            WScore5.Text = "0";
+            WScore5.Click += Score_Click;
             // 
             // WScore6
             // 
@@ -367,111 +367,111 @@
             WScore6.TabIndex = 24;
             WScore6.Tag = "W6Sc";
             WScore6.Text = "0";
-            WScore6.Click += WScore6_Click;
+            WScore6.Click += Score_Click;
             // 
-            // label25
+            // EScore4
             // 
-            label25.AutoSize = true;
-            label25.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label25.ForeColor = Color.AliceBlue;
-            label25.Location = new Point(334, 379);
-            label25.Name = "label25";
-            label25.Size = new Size(35, 41);
-            label25.TabIndex = 25;
-            label25.Tag = "E4Sc";
-            label25.Text = "0";
-            label25.Click += label25_Click;
+            EScore4.AutoSize = true;
+            EScore4.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore4.ForeColor = Color.AliceBlue;
+            EScore4.Location = new Point(334, 379);
+            EScore4.Name = "EScore4";
+            EScore4.Size = new Size(35, 41);
+            EScore4.TabIndex = 25;
+            EScore4.Tag = "E4Sc";
+            EScore4.Text = "0";
+            EScore4.Click += Score_Click;
             // 
-            // label26
+            // EScore3
             // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label26.ForeColor = Color.AliceBlue;
-            label26.Location = new Point(334, 338);
-            label26.Name = "label26";
-            label26.Size = new Size(35, 41);
-            label26.TabIndex = 26;
-            label26.Tag = "E3Sc";
-            label26.Text = "0";
-            label26.Click += Score_Click;
+            EScore3.AutoSize = true;
+            EScore3.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore3.ForeColor = Color.AliceBlue;
+            EScore3.Location = new Point(334, 338);
+            EScore3.Name = "EScore3";
+            EScore3.Size = new Size(35, 41);
+            EScore3.TabIndex = 26;
+            EScore3.Tag = "E3Sc";
+            EScore3.Text = "0";
+            EScore3.Click += Score_Click;
             // 
-            // label27
+            // EScore2
             // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label27.ForeColor = Color.AliceBlue;
-            label27.Location = new Point(334, 297);
-            label27.Name = "label27";
-            label27.Size = new Size(35, 41);
-            label27.TabIndex = 27;
-            label27.Tag = "E2Sc";
-            label27.Text = "0";
-            label27.Click += label27_Click;
+            EScore2.AutoSize = true;
+            EScore2.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore2.ForeColor = Color.AliceBlue;
+            EScore2.Location = new Point(334, 297);
+            EScore2.Name = "EScore2";
+            EScore2.Size = new Size(35, 41);
+            EScore2.TabIndex = 27;
+            EScore2.Tag = "E2Sc";
+            EScore2.Text = "0";
+            EScore2.Click += Score_Click;
             // 
-            // label28
+            // EScore1
             // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label28.ForeColor = Color.AliceBlue;
-            label28.Location = new Point(334, 256);
-            label28.Name = "label28";
-            label28.Size = new Size(35, 41);
-            label28.TabIndex = 28;
-            label28.Tag = "E1Sc";
-            label28.Text = "0";
-            label28.Click += label28_Click;
+            EScore1.AutoSize = true;
+            EScore1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore1.ForeColor = Color.AliceBlue;
+            EScore1.Location = new Point(334, 256);
+            EScore1.Name = "EScore1";
+            EScore1.Size = new Size(35, 41);
+            EScore1.TabIndex = 28;
+            EScore1.Tag = "E1Sc";
+            EScore1.Text = "0";
+            EScore1.Click += Score_Click;
             // 
-            // label29
+            // EScore5
             // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label29.ForeColor = Color.AliceBlue;
-            label29.Location = new Point(445, 379);
-            label29.Name = "label29";
-            label29.Size = new Size(35, 41);
-            label29.TabIndex = 29;
-            label29.Tag = "E5Sc";
-            label29.Text = "0";
-            label29.Click += label29_Click;
+            EScore5.AutoSize = true;
+            EScore5.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore5.ForeColor = Color.AliceBlue;
+            EScore5.Location = new Point(445, 379);
+            EScore5.Name = "EScore5";
+            EScore5.Size = new Size(35, 41);
+            EScore5.TabIndex = 29;
+            EScore5.Tag = "E5Sc";
+            EScore5.Text = "0";
+            EScore5.Click += Score_Click;
             // 
-            // label30
+            // EScore6
             // 
-            label30.AutoSize = true;
-            label30.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label30.ForeColor = Color.AliceBlue;
-            label30.Location = new Point(445, 338);
-            label30.Name = "label30";
-            label30.Size = new Size(35, 41);
-            label30.TabIndex = 30;
-            label30.Tag = "E6Sc";
-            label30.Text = "0";
-            label30.Click += label30_Click;
+            EScore6.AutoSize = true;
+            EScore6.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore6.ForeColor = Color.AliceBlue;
+            EScore6.Location = new Point(445, 338);
+            EScore6.Name = "EScore6";
+            EScore6.Size = new Size(35, 41);
+            EScore6.TabIndex = 30;
+            EScore6.Tag = "E6Sc";
+            EScore6.Text = "0";
+            EScore6.Click += Score_Click;
             // 
-            // label31
+            // EScore7
             // 
-            label31.AutoSize = true;
-            label31.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label31.ForeColor = Color.AliceBlue;
-            label31.Location = new Point(445, 297);
-            label31.Name = "label31";
-            label31.Size = new Size(35, 41);
-            label31.TabIndex = 31;
-            label31.Tag = "E7Sc";
-            label31.Text = "0";
-            label31.Click += label31_Click;
+            EScore7.AutoSize = true;
+            EScore7.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore7.ForeColor = Color.AliceBlue;
+            EScore7.Location = new Point(445, 297);
+            EScore7.Name = "EScore7";
+            EScore7.Size = new Size(35, 41);
+            EScore7.TabIndex = 31;
+            EScore7.Tag = "E7Sc";
+            EScore7.Text = "0";
+            EScore7.Click += Score_Click;
             // 
-            // label32
+            // EScore8
             // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label32.ForeColor = Color.AliceBlue;
-            label32.Location = new Point(445, 256);
-            label32.Name = "label32";
-            label32.Size = new Size(35, 41);
-            label32.TabIndex = 32;
-            label32.Tag = "E8Sc";
-            label32.Text = "0";
-            label32.Click += label32_Click;
+            EScore8.AutoSize = true;
+            EScore8.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            EScore8.ForeColor = Color.AliceBlue;
+            EScore8.Location = new Point(445, 256);
+            EScore8.Name = "EScore8";
+            EScore8.Size = new Size(35, 41);
+            EScore8.TabIndex = 32;
+            EScore8.Tag = "E8Sc";
+            EScore8.Text = "0";
+            EScore8.Click += Score_Click;
             // 
             // FirstRound
             // 
@@ -479,21 +479,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 450);
-            Controls.Add(label32);
-            Controls.Add(label31);
-            Controls.Add(label30);
-            Controls.Add(label29);
-            Controls.Add(label28);
-            Controls.Add(label27);
-            Controls.Add(label26);
-            Controls.Add(label25);
+            Controls.Add(EScore8);
+            Controls.Add(EScore7);
+            Controls.Add(EScore6);
+            Controls.Add(EScore5);
+            Controls.Add(EScore1);
+            Controls.Add(EScore2);
+            Controls.Add(EScore3);
+            Controls.Add(EScore4);
             Controls.Add(WScore6);
-            Controls.Add(W5Sc);
+            Controls.Add(WScore5);
             Controls.Add(WScore2);
             Controls.Add(WScore3);
             Controls.Add(WScore4);
             Controls.Add(WScore8);
-            Controls.Add(Wscore7);
+            Controls.Add(WScore7);
             Controls.Add(WScore1);
             Controls.Add(NextRound);
             Controls.Add(EasternFirst);
@@ -538,20 +538,20 @@
         private Label EasternFirst;
         private Button NextRound;
         private Label WScore1;
-        private Label Wscore7;
+        private Label WScore7;
         private Label WScore8;
         private Label WScore4;
         private Label WScore3;
         private Label WScore2;
-        private Label W5Sc;
+        private Label WScore5;
         private Label WScore6;
-        private Label label25;
-        private Label label26;
-        private Label label27;
-        private Label label28;
-        private Label label29;
-        private Label label30;
-        private Label label31;
-        private Label label32;
+        private Label EScore4;
+        private Label EScore3;
+        private Label EScore2;
+        private Label EScore1;
+        private Label EScore5;
+        private Label EScore6;
+        private Label EScore7;
+        private Label EScore8;
     }
 }

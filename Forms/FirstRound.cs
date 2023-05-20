@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +16,8 @@ namespace HockeyManager.Forms
     {
         private Dictionary<int, string> _easternTeams;
         private Dictionary<int, string> _westernTeams;
-        private Dictionary<int, string> teamNames = new();
+        private Dictionary<int, string> _easternTeamNames = new();
+        private Dictionary<int, string> _westernTeamNames = new();
 
         public FirstRound(Dictionary<int, string> easternTeam, Dictionary<int, string> westernTeam)
         {
@@ -50,22 +53,28 @@ namespace HockeyManager.Forms
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong\n" + ex.Message);
             }
         }
 
-    private void Score_Click(object sender, EventArgs e)
+        private void Score_Click(object sender, EventArgs e)
         {
             try
             {
-
                 Label score = (Label)sender;
+                string scoreTag = score.Tag.ToString();
+                int key = int.Parse(scoreTag[1].ToString());
+                int opositeNum = 9 - key;
+                Label opositeLabel = (Label)Controls.Find($"{scoreTag[0]}Score{opositeNum}", true).First();
+
+                if (opositeLabel.Text.SequenceEqual("4") || score.Text.SequenceEqual("4")) return;
+
+
                 score.Text = (int.Parse(score.Text) + 1).ToString();
                 if (score.Text.SequenceEqual("4"))
                 {
-                    string scoreTag = score.Tag.ToString();
                     foreach (var item in Controls)
                     {
                         if (item.GetType() != typeof(Label))
@@ -73,12 +82,16 @@ namespace HockeyManager.Forms
                             continue;
                         }
                         Label label = (Label)item;
-                        if (label.Tag.ToString().SequenceEqual($"{scoreTag[0]}T{scoreTag[1]}")) 
+                        if (label.Tag.ToString().SequenceEqual($"{scoreTag[0]}{scoreTag[1]}Sc"))
                         {
-                            AddWinningTeam(label.Text, int.Parse(scoreTag[1].ToString()), scoreTag[0]);
+                            AddWinningTeam(label.Text, key, scoreTag[0]);
+                            if (_easternTeamNames.Count + _westernTeamNames.Count == 8)
+                            {
+                                NextRound.Enabled = true;
+                            }
                             break;
                         }
-                        label.Enabled = false;
+
                     }
                 }
             }
@@ -90,80 +103,18 @@ namespace HockeyManager.Forms
 
         private void AddWinningTeam(string teamName, int key, char conference)
         {
-            int opositeNum = 9 - key;
-            Label label = (Label)Controls.Find($"{conference}Score{opositeNum}", false).First();
-            label.Enabled = false;
             if (key > 4)
             {
                 switch (key)
                 {
-                    case 8:key = 1;break;
+                    case 8: key = 1; break;
                     case 7: key = 2; break;
                     case 6: key = 3; break;
                     case 5: key = 4; break;
                 }
             }
-            teamNames.Add(key, teamName);
-        }
-
-        private void WScore2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void WScore3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void WScore4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void WScore8_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void Wscore7_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void WScore6_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void W5Sc_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label32_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label31_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void WScore1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label30_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label29_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
+            if (conference.Equals('E')) _easternTeamNames.Add(key, teamName);
+            else _westernTeamNames.Add(key, teamName);
         }
     }
 }

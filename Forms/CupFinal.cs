@@ -57,6 +57,7 @@ namespace HockeyManager.Forms
 
         private void EasternScore_Click(object sender, EventArgs e)
         {
+            if (easternScore.Text.SequenceEqual("4") || westernScore.Text.SequenceEqual("4")) return;
             easternScore.Text = (int.Parse(easternScore.Text) + 1).ToString();
             if (easternScore.Text.SequenceEqual("4"))
             {
@@ -67,6 +68,7 @@ namespace HockeyManager.Forms
 
         private void westernScore_Click(object sender, EventArgs e)
         {
+            if (westernScore.Text.SequenceEqual("4") || easternScore.Text.SequenceEqual("4")) return;
             westernScore.Text = (int.Parse(westernScore.Text) + 1).ToString();
             if (westernScore.Text.SequenceEqual("4"))
             {
@@ -78,8 +80,6 @@ namespace HockeyManager.Forms
 
         private void ChangeEnableStatus()
         {
-            westernScore.Enabled = false;
-            easternScore.Enabled = false;
             StatsButton.Enabled = true;
         }
 
